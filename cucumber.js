@@ -7,7 +7,7 @@ module.exports={
 
         
         requireModule: [
-            "ts-node/register"
+            "tsx"
         ],
         require: [
             "src/test/hooks/*.ts",
@@ -36,7 +36,7 @@ format: [
 
         
         requireModule: [
-            "ts-node/register"
+            "tsx"
         ],
         require: [
             "src/hooks/*.ts",
