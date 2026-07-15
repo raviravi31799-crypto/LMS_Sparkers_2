@@ -1,0 +1,28 @@
+{
+  "name": "lms_sparkers_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.1.0",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure-commandline": "^2.43.0",
+    "allure-cucumberjs": "^3.10.2",
+    "cross-env": "^10.1.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.1",
+    "dotenv": "^17.4.2",
+    "multiple-cucumber-html-reporter": "^3.10.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.19.0",
+    "xlsx": "^0.18.5"
+  }
+}
