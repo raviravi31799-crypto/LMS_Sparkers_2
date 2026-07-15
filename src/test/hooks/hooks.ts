@@ -1,0 +1,37 @@
+import { After, AfterAll, Before, BeforeAll } from "@cucumber/cucumber";
+import { Browser, chromium } from "@playwright/test";
+import { logger } from '../utils/winstonlogger';
+import { CustomWorld } from "../world/world";
+
+
+let browser: Browser;
+BeforeAll(async () => {
+    logger.info("Launching browser");
+    browser = await chromium.launch({ headless: false });
+});
+
+Before(async function (this: CustomWorld, scenario) {
+    logger.info(`Starting scenario:${scenario.pickle.name}`);
+    this.browser=browser;
+    this.context=await browser.newContext();
+    this.page=await this.context.newPage();
+
+});
+
+After(async function (this: CustomWorld, scenario) {
+    if (scenario.result?.status === "FAILED") {
+        const path = `reports/screenshots/${Date.now()}.png`;
+        await this.page.screenshot({ path });
+        logger.error(`Screenshot FAILED:${scenario.pickle.name}`);
+        logger.error(`Screenshot saved:${path}`);
+    } else {
+        logger.info(`Scenario PASSED:${scenario.pickle.name}`);
+    }
+    await this.page.close();
+    await this.context.close();
+});
+
+AfterAll(async () => {
+    logger.info("closing browser");
+    await browser.close();
+});
