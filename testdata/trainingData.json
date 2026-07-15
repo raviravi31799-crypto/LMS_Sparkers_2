@@ -1,0 +1,10 @@
+{
+  "projectName": "ABC",
+  "empId": "1002",
+  "employeeName": "Sriram",
+  "course": "AI-DS",
+  "trainerName": "ARUN",
+  "trainingType": "Udemy",
+  "status": "In Progress",
+  "percentCompleted": "8"
+}
