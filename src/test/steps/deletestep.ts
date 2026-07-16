@@ -16,3 +16,5 @@ Then('the selected employee training record should not be displayed in the list'
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
+
+
