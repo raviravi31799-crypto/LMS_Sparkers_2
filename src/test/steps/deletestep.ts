@@ -1,18 +1,11 @@
-import { Given, Then, When } from "@cucumber/cucumber";
-import fs from "fs";
-import path from "path";
-import { BasePage } from "../pages/Basepage";
-import { CreateTrainingPage } from "../pages/createTrainingPage";
-import { logger } from "../utils/winstonlogger";
+import { When, Then } from "@cucumber/cucumber";
 import { CustomWorld } from "../world/world";
+import deleteData from "../../../testdata/deleteData.json";
 
-
-When('the user clicks the Delete icon', async function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+When('the user clicks the Delete icon', async function (this: CustomWorld) {
+    await this.deletepage.deleteEmployee(deleteData.empId);
 });
 
-Then('the selected employee training record should not be displayed in the list', async function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+Then('the selected employee training record should not be displayed in the list', async function (this: CustomWorld) {
+    await this.deletepage.verifyEmployeeDeleted(deleteData.empId);
 });

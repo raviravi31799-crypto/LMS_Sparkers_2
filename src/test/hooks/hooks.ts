@@ -2,6 +2,7 @@ import { After, AfterAll, Before, BeforeAll } from "@cucumber/cucumber";
 import { Browser, chromium } from "@playwright/test";
 import { logger } from '../utils/winstonlogger';
 import { CustomWorld } from "../world/world";
+import { deletePage } from "../pages/deletePage";
 
 
 let browser: Browser;
@@ -15,7 +16,8 @@ Before(async function (this: CustomWorld, scenario) {
     this.browser=browser;
     this.context=await browser.newContext();
     this.page=await this.context.newPage();
-
+    this.deletepage = new deletePage(this.page);
+    
 });
 
 After(async function (this: CustomWorld, scenario) {
