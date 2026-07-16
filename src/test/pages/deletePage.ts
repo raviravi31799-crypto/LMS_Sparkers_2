@@ -14,4 +14,3 @@ async deleteEmployee(empId: string) {
   logger.info(`Employee with EMP ID ${empId} deleted successfully`);
 }
 }
-
