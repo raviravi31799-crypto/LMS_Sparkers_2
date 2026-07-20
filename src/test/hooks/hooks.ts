@@ -3,6 +3,7 @@ import { Browser, chromium } from "@playwright/test";
 import { logger } from '../utils/winstonlogger';
 import { CustomWorld } from "../world/world";
 import { deletePage } from "../pages/deletePage";
+import { exportPage } from "../pages/exportpage";
 
 
 let browser: Browser;
@@ -17,6 +18,7 @@ Before(async function (this: CustomWorld, scenario) {
     this.context=await browser.newContext();
     this.page=await this.context.newPage();
     this.deletepage = new deletePage(this.page);
+    this.ep=new exportPage(this.page);
     
 });
 
