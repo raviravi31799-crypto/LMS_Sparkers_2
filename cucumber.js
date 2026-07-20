@@ -20,7 +20,7 @@ module.exports={
     
 
     publishQuiet: true,
-    dryRun: true,
+    dryRun: false,
 format: [
   
   "html:reports/cucumber-html/cucumber-report.html",
