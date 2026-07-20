@@ -7,7 +7,7 @@ module.exports={
 
         
         requireModule: [
-            "tsx"
+            "ts-node/register"
         ],
         require: [
             "src/test/hooks/*.ts",
@@ -22,11 +22,12 @@ module.exports={
     publishQuiet: true,
     dryRun: true,
 format: [
-  "progress-bar",
+  
   "html:reports/cucumber-html/cucumber-report.html",
   "json:reports/cucumber-json/cucumber-report.json",
   "rerun:rerun/rerun.txt",
-  "allure-cucumberjs/reporter"
+  "allure-cucumberjs/reporter",
+  "progress"
 ]
     },
     rerun: {
@@ -52,7 +53,7 @@ format: [
     dryRun: false,
 
     format: [
-        "progress-bar",
+        "progress",
         "html:reports/cucumber-report.html",
         "json:reports/cucumber-report.json",
         "rerun:rerun/rerun.txt"
