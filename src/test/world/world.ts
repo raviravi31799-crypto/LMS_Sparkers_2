@@ -1,6 +1,8 @@
-import { Browser, BrowserContext, Page } from "@playwright/test";
+import { Browser, BrowserContext, Download, Page } from "@playwright/test";
 import { deletePage } from "../pages/deletePage";
 import { Filterpage } from "../pages/filterpage";
+import { exportPage } from "../pages/exportpage";
+import {editPage } from "../pages/editPage";
 
 export class CustomWorld {
     browser!: Browser;
@@ -11,6 +13,9 @@ export class CustomWorld {
     deletepage!:deletePage;
     filterpage!:Filterpage;
 
+    ep!:exportPage;
+    download!:Download
 
+    editpage!:editPage;
 }
 
