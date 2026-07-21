@@ -5,6 +5,7 @@ import { CustomWorld } from "../world/world";
 import { deletePage } from "../pages/deletePage";
 import { exportPage } from "../pages/exportpage";
 
+import {editPage } from "../pages/editPage";
 
 let browser: Browser;
 BeforeAll(async () => {
@@ -19,6 +20,7 @@ Before(async function (this: CustomWorld, scenario) {
     this.page=await this.context.newPage();
     this.deletepage = new deletePage(this.page);
     this.ep=new exportPage(this.page);
+    this.editpage=new editPage(this.page);
     
 });
 
