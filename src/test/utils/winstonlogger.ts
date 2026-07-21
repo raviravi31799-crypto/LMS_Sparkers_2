@@ -3,7 +3,7 @@ export const logger=winston.createLogger({
     level:"info",
     format:winston.format.combine(
   winston.format.timestamp(),
-  winston.format.printf(({level,message,timestamp})=>{
+  winston.format.printf(({level,message,timestamp}:any)=>{
     return `[{$timestamp}] ${level.toUpperCase()} -${message}`;
   })
     ),
