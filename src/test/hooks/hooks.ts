@@ -3,7 +3,7 @@ import { Browser, chromium } from "@playwright/test";
 import { logger } from '../utils/winstonlogger';
 import { CustomWorld } from "../world/world";
 import { deletePage } from "../pages/deletePage";
-
+import {editPage } from "../pages/editPage";
 
 let browser: Browser;
 BeforeAll(async () => {
@@ -17,6 +17,7 @@ Before(async function (this: CustomWorld, scenario) {
     this.context=await browser.newContext();
     this.page=await this.context.newPage();
     this.deletepage = new deletePage(this.page);
+    this.editpage=new editPage(this.page);
     
 });
 
