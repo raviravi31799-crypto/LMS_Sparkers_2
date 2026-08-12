@@ -56,8 +56,8 @@ format: [
         "progress",
         "html:reports/cucumber-report.html",
         "json:reports/cucumber-report.json",
-        "rerun:rerun/rerun.txt"
-    
+        "rerun:rerun/rerun.txt",    
+        "allure-cucumberjs/reporter:allure-results"
         
     ]
     }
