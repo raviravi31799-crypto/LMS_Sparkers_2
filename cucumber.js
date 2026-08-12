@@ -21,14 +21,13 @@ module.exports={
 
     publishQuiet: true,
     dryRun: false,
-format: [
-  
-  "html:reports/cucumber-html/cucumber-report.html",
-  "json:reports/cucumber-json/cucumber-report.json",
-  "rerun:rerun/rerun.txt",
-  "allure-cucumberjs/reporter",
-  "progress"
-]
+    format: [
+    "html:reports/cucumber-html/cucumber-report.html",
+    "json:reports/cucumber-json/cucumber-report.json",
+    "rerun:rerun/rerun.txt",
+    "allure-cucumberjs/reporter:allure-results",
+    "progress"
+    ]
     },
     rerun: {
         formatOptions: {
@@ -51,14 +50,12 @@ format: [
 
     publishQuiet: true,
     dryRun: false,
-
     format: [
-        "progress",
-        "html:reports/cucumber-report.html",
-        "json:reports/cucumber-report.json",
-        "rerun:rerun/rerun.txt",    
-        "allure-cucumberjs/reporter:allure-results"
-        
+        "html:reports/cucumber-html/cucumber-report.html",
+        "json:reports/cucumber-json/cucumber-report.json",
+        "rerun:rerun/rerun.txt",
+        "allure-cucumberjs/reporter:allure-results"  ,
+        "progress"
     ]
     }
     
