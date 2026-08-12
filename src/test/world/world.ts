@@ -1,13 +1,20 @@
+import { BasePage } from "../pages/Basepage";
+import { CreateTrainingPage } from "../pages/createTrainingPage";
+
 import { Browser, BrowserContext, Download, Page } from "@playwright/test";
 import { deletePage } from "../pages/deletePage";
-import { Filterpage } from "../pages/filterpage";
+import { editPage } from "../pages/editPage";
 import { exportPage } from "../pages/exportpage";
-import {editPage } from "../pages/editPage";
+import { Filterpage } from "../pages/filterpage";
+
 
 export class CustomWorld {
     browser!: Browser;
     context!: BrowserContext;
     page!: Page;
+    basePage!: BasePage;
+    createTrainingPage!: CreateTrainingPage;
+
 
 
     deletepage!:deletePage;
@@ -17,5 +24,6 @@ export class CustomWorld {
     download!:Download
 
     editpage!:editPage;
+
 }
 
