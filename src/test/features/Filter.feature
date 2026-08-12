@@ -16,4 +16,5 @@ Examples:
 |EmpId   | 1002    |
 |Student | Sriram  |
 |Course  | AI-DS   |
+|Trainer | Arun    |
 
