@@ -10,7 +10,7 @@
     "Jothika": "cucumber-js --tags @Jothika",
     "Harini": "cucumber-js --tags @Harini",
     "jagadeep": "cucumber-js --tags \"@jagadeep and not @Bug-1\"",
-    "Subha": "cucumber-js --tags   @Subha",
+    "Subha": "cucumber-js --tags @Subha",
     "parallel": "cucumber-js --parallel 2",
     "re:fail": "cucumber-js -p rerun",
     "posttest": "npx ts-node src/test/utils/report.ts",
@@ -38,7 +38,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "csv-parser": "^3.2.1",
+    "csv-parse": "^7.0.1",
     "dotenv": "^17.4.2",
     "multiple-cucumber-html-reporter": "^3.10.0",
     "ts-node": "^10.9.2",

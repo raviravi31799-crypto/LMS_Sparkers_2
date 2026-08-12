@@ -1,4 +1,4 @@
-import { When, Then } from "@cucumber/cucumber";
+import { Given,When, Then } from "@cucumber/cucumber";
 import { CustomWorld } from "../world/world";
 import deleteData from "../../../testdata/deleteData.json";
 
