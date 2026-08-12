@@ -2,6 +2,8 @@ import { After, AfterAll, Before, BeforeAll } from "@cucumber/cucumber";
 import { Browser, chromium } from "@playwright/test";
 import { logger } from '../utils/winstonlogger';
 import { CustomWorld } from "../world/world";
+import { BasePage } from "../pages/Basepage";
+import { CreateTrainingPage } from "../pages/createTrainingPage";
 
 
 let browser: Browser;
@@ -14,8 +16,12 @@ Before(async function (this: CustomWorld, scenario) {
     logger.info(`Starting scenario:${scenario.pickle.name}`);
     this.browser=browser;
     this.context=await browser.newContext();
+    logger.info("Context created successfully");
     this.page=await this.context.newPage();
-
+    logger.info("Page created successfully");
+    this.basePage = new BasePage(this.page);
+    this.createTrainingPage = new CreateTrainingPage(this.page);
+    logger.info("Page objects created successfully");
 });
 
 After(async function (this: CustomWorld, scenario) {
