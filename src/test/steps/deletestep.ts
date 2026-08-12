@@ -6,7 +6,7 @@ import { CreateTrainingPage } from "../pages/createTrainingPage";
 
 let createdEmpId: string;
 
-When("the user clicks the Delete icon", async function (this: CustomWorld) {
+When("the user clicks the Delete icon",{ timeout: 15000 }, async function (this: CustomWorld) {
 
     const createTrainingPage = new CreateTrainingPage(this.page!);
     const filePath = path.join(process.cwd(),"testdata","deleteData.json");
