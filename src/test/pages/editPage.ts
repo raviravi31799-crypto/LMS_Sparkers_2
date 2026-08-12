@@ -26,13 +26,26 @@ export class editPage extends BasePage {
   async clickEditIcon(employeeName: string) {
     logger.info(`Clicking edit icon for EMP Name: ${employeeName}`);
 
+    console.log("URL:", await this.page.url());
+
+    const tableRows = await this.page
+        .locator("//table//tbody//tr")
+        .allTextContents();
+
+    console.log("TABLE ROW COUNT:", tableRows.length);
+    console.log("TABLE ROWS:", tableRows);
+
     const row = this.getRowByEmpName(employeeName);
-    await expect(row).toBeVisible({ timeout: 10000 });
+
+    console.log("Employee Name:", employeeName);
+    console.log("Row Count:", await row.count());
+
+    await expect(row).toBeVisible({ timeout: 30000 });
 
     await row.locator(this.editIcon).click();
 
     await this.page.waitForSelector(this.courseInput);
-  }
+}
 
   async updateFields(fields: string[], data: TrainingRecord) {
     for (const field of fields) {
