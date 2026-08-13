@@ -36,3 +36,11 @@ Then("the employee training record should be updated successfully",async functio
         await editPage.verifyUpdated("AI-DS Updated");
     }
 );
+
+Then("the course validation message should be displayed",async function (this: CustomWorld) {
+
+        const editPage = new EditTrainingPage(this.page);
+
+        await editPage.verifyCourseValidationMessage();
+    }
+);

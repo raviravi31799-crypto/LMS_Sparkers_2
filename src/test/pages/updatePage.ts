@@ -18,6 +18,15 @@ export class EditTrainingPage {
 
     private updateButton = "//*[@id='root']/div/main/div[2]/div/form/div[9]/button[2]";
 
+    private courseValidationMessage = "//*[@id='root']/div/main/div[2]/div[3]/table/tbody/tr[129]";
+
+    async verifyCourseValidationMessage() {
+
+    await expect(this.page.locator(this.courseValidationMessage)).toBeVisible();
+
+    logger.info("Course validation message displayed successfully");
+}
+
     async clickLastEditIcon() {
 
         logger.info("Clicking last record edit icon");
