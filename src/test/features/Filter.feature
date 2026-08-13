@@ -11,12 +11,12 @@ And the user applied "<filters>" for different "<columns>" such as ProjectName,E
 Then the application should display matching "<columns>" value for applied "<filters>"
 
 Examples:
-|filters | columns |
-|Project | ABC     |
-|EmpId   | 1002    |
-|Student | Sriram  |
-|Course  | AI-DS   |
-|Trainer | Ravi    |
+|filters | columns           |
+|Project | ABC               |
+|EmpId   | 12345             |
+|Student | Sriram            |
+|Course  | Java Automation   |
+|Trainer | Ravi              |
 
 
 @filter
