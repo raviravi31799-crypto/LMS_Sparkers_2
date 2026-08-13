@@ -28,6 +28,7 @@ export class CreateTrainingPage {
   
   private tableRows = "//table//tbody/tr";
 
+
   constructor(page: Page) {
     this.page = page;
   }
@@ -68,10 +69,69 @@ export class CreateTrainingPage {
     logger.info("Form fill complete");
   }
 
-  async clickAdd() {
-    await this.page.locator(this.addBtn).click();
+  async invalForm(projectName : string , empId : string , employeeName : string , course : string , trainerName : string , trainingType : string , startDate : string , endDate : string , status : string , percentCompleted : string ) {
+    logger.info(`Filling form: ${projectName} , ${empId} , ${employeeName} , ${course} , ${trainerName} , ${trainingType} , ${startDate} , ${endDate} , ${status} , ${percentCompleted}`);
+    await this.selectDropdown(this.projectNameDropdown, projectName);
+    await this.page.locator(this.empIdInput).fill(empId);
+    await this.page.locator(this.employeeNameInput).fill(employeeName);
+    await this.page.locator(this.courseInput).fill(course);
+    await this.page.locator(this.trainerNameInput).fill(trainerName);
+    await this.selectDropdown(this.trainingTypeDropdown, trainingType);
+    await this.page.locator(this.startDateInput).fill(startDate);
+    await this.page.locator(this.endDateInput).fill(endDate);
+    await this.selectDropdown(this.statusDropdown, status);
+    await this.page.locator(this.percentCompletedInput).fill(percentCompleted);
   }
 
+ async clickAddAndGetAlert(): Promise<void> {
+
+    let alertText = '';
+
+    this.page.on('dialog', async dialog => {
+        console.log('========== DIALOG DETECTED ==========');
+        console.log('TYPE:', dialog.type());
+        console.log('MESSAGE:', dialog.message());
+
+        alertText = dialog.message();
+
+        await dialog.accept();
+    });
+
+    console.log('BEFORE ADD CLICK');
+
+    await this.page.locator(this.addBtn).click();
+
+    console.log('AFTER ADD CLICK');
+
+    await this.page.waitForTimeout(1000);
+
+    console.log('FINAL ALERT TEXT:', alertText);
+
+    expect(alertText).toBe('Trainer Name is required.');
+}
+async clickAdd(){
+  const addButton = this.page.locator(this.addBtn);
+
+  await addButton.waitFor({
+    state: "visible",
+    timeout: 10000
+  });
+
+  await addButton.scrollIntoViewIfNeeded();
+
+  this.page.on('dialog', async dialog => {
+    const alertText = dialog.message();
+
+    console.log(alertText);
+
+    await dialog.accept();
+});
+
+  await addButton.click();
+
+ 
+}
+ 
   async verifyTableHasRecords() {
     const rows = this.page.locator(this.tableRows);
     await expect(rows.first()).toBeVisible({ timeout: 10000 });
