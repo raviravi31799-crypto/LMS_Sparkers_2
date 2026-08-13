@@ -119,4 +119,28 @@ export class editPage extends BasePage {
 
     logger.info("Updated record verified successfully in the list");
   }
+  async getCurrentPercentCompleted(): Promise<string> {
+  const value = await this.page.locator(this.percentCompletedInput).inputValue();
+  logger.info(`Current % Completed before edit: ${value}`);
+  return value;
+}
+
+async enterInvalidPercentCompleted(value: string) {
+  logger.info(`Entering invalid % Completed value: ${value}`);
+  await this.page.locator(this.percentCompletedInput).fill(value);
+}
+async verifyPercentCompletedRejected(employeeName: string, originalValue: string, invalidValue: string) {
+  await this.page.reload();
+  await this.page.waitForLoadState("networkidle");
+
+  const row = this.getRowByEmpName(employeeName);
+  await expect(row).toBeVisible({ timeout: 30000 });
+
+  await expect(row).toContainText(originalValue + "%");
+  await expect(row).not.toContainText(invalidValue + "%");
+
+  logger.info(
+    `Verified record retained original % Completed (${originalValue}%) and rejected invalid value (${invalidValue}%) after reload`
+  );
+}
 }

@@ -9,7 +9,9 @@ export interface TrainingRecord {
   endDate: string;
   status: string;
   percentCompleted: string;
+  invalidPercentCompleted: string;
 }
+
 
 export interface EnvConfig {
   BASE_URL: string;
