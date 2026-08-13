@@ -1,0 +1,24 @@
+{
+  "invalidfilters": [
+    {
+      "filters": "Project",
+      "columns": "XYZ999"
+    },
+    {
+      "filters": "EmpId",
+      "columns": "99999"
+    },
+    {
+      "filters": "Student",
+      "columns": "Joshitha"
+    },
+    {
+      "filters": "Course",
+      "columns": "XYZCourse"
+    },
+    {
+      "filters": "Trainer",
+      "columns": "Unknown"
+    }
+  ]
+}

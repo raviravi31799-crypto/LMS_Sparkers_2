@@ -18,7 +18,7 @@ export class Filterpage extends BasePage{
     private  empNameCol = this.page.locator("//td[3]")
     private  courseCol = this.page.locator("//td[4]")
     private  trainerCol = this.page.locator("//td[5]")
-   
+    private rows = this.page.locator("tbody tr");
     
      
 
@@ -80,6 +80,17 @@ export class Filterpage extends BasePage{
             break;
     }
     }
+    async getRecordCount(): Promise<number> {
+    return await this.rows.count();
+}
+async clearFilters() {
+
+    await this.project.fill("");
+    await this.empId.fill("");
+    await this.empName.fill("");
+    await this.course.fill("");
+    await this.trainer.fill("");
+}
 }
 
 
