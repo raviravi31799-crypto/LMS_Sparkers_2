@@ -1,3 +1,12 @@
 {
-    "empId": "9865"
+  "projectName": "ABC",
+  "empId": "2001",
+  "employeeName": "DeleteTest",
+  "course": "AI-DS",
+  "trainerName": "ARUN",
+  "trainingType": "Udemy",
+  "today": "2026-08-13",
+  "endDate": "2026-08-20",
+  "status": "In Progress",
+  "percentCompleted": "8"
 }
