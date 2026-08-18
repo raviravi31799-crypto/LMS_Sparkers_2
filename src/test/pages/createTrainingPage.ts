@@ -140,9 +140,9 @@ async clickAdd(){
     expect(count).toBeGreaterThan(0);
   }
 
-  async verifyRecordExistsByName(name: string) {
-    const row = this.page.locator(`//table//tbody/tr[contains(.,'${name}')]`);
+  async verifyRecordExistsByEmpId(empId: string) {
+    const row = this.page.locator(`//table//tbody/tr[contains(.,'${empId}')]`);
     await expect(row).toBeVisible({ timeout: 10000 });
-    logger.info(`Record verified: ${name}`);
+    logger.info(`Record verified: ${empId}`);
   }
 }

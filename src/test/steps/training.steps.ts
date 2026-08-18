@@ -9,7 +9,7 @@ let alertMessage = "";
 
 let basePage: BasePage;
 let createTrainingPage: CreateTrainingPage;
-let employeeName = "";
+let employeeEmpId = "";
 
 Given("the user navigates to the Employee Training Records page", async function (this: CustomWorld) {
   basePage = new BasePage(this.page!);
@@ -44,7 +44,7 @@ When("the user enters valid employee training details", async function () {
   percentCompleted: raw.percentCompleted,
 };
 
-  employeeName = record.employeeName;
+  employeeEmpId = record.empId;
   logger.info(`Record: ${JSON.stringify(record)}`);
   await createTrainingPage.fillForm(record);
 });
@@ -58,7 +58,7 @@ Then("the employee training record should be created successfully", async functi
 });
 
 Then("the employee training record should be displayed in the Employee Training list", async function () {
-  await createTrainingPage.verifyRecordExistsByName(employeeName);
+  await createTrainingPage.verifyRecordExistsByEmpId(employeeEmpId);
 });
 
 When('the user enters {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} in the respective fields', async function (string, string2, string3, string4, string5, string6, string7, string8, string9, string10) {
