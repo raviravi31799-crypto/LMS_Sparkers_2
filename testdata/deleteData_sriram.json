@@ -1,0 +1,12 @@
+{
+  "projectName": "ABC",
+  "empId": "3001",
+  "employeeName": "SriramDeleteTest",
+  "course": "AI-DS",
+  "trainerName": "Sriram",
+  "trainingType": "Udemy",
+  "today": "2026-08-19",
+  "endDate": "2026-08-25",
+  "status": "In Progress",
+  "percentCompleted": "10"
+}

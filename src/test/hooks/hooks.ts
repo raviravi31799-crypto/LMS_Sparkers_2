@@ -8,6 +8,7 @@ import { logger } from '../utils/winstonlogger';
 import { CustomWorld } from "../world/world";
 
 import { deletePage } from "../pages/deletePage";
+import { DeletePageSriram } from "../pages/delete.page.sriram";
 import { exportPage } from "../pages/exportpage";
 import { Filterpage } from "../pages/filterpage";
 
@@ -36,6 +37,7 @@ Before({ timeout: defaultTimeout }, async function (this: CustomWorld, scenario)
     logger.info("Page objects created successfully");
 
     this.deletepage = new deletePage(this.page);
+    this.deletepagesriram = new DeletePageSriram(this.page);
     this.filterpage = new Filterpage(this.page);
     this.ep = new exportPage(this.page);
     this.editpage = new editPage(this.page);
