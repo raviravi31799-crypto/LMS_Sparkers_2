@@ -3,7 +3,6 @@ module.exports = {
 
         formatOptions: {
             snippetInterface: "async-await",
-            resultsDir: "allure-results"
         },
 
         requireModule: [
