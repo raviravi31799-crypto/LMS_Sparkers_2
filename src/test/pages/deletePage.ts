@@ -47,8 +47,13 @@ export class deletePage extends BasePage {
 
     await this.classroomFilter.fill(classroom);
 
+    // Wait for filtering to take effect
+    await this.page.waitForTimeout(1000);
+
     logger.info(`Filtered records using Classroom: ${classroom}`);
 }
+
+
 private firstDeletedEmpId: string = "";
 
 async deleteFirstFilteredRecord() {
@@ -65,25 +70,48 @@ async deleteFirstFilteredRecord() {
         `First filtered record EMP ID: ${this.firstDeletedEmpId}`
     );
 
-    await firstRow.locator(this.deleteBtn).click();
-
-    logger.info("Delete clicked for first filtered record");
-}
-async verifyFirstFilteredRecordDeleted() {
-
-    const row = this.page
-        .locator("tbody tr")
-        .filter({
-            has: this.page.getByText(
-                this.firstDeletedEmpId,
-                { exact: true }
-            )
-        });
-
-    await expect(row).toHaveCount(0);
+    // Delete the exact employee
+    await this.deleteEmployee(this.firstDeletedEmpId);
 
     logger.info(
-        `Verified ${this.firstDeletedEmpId} is no longer displayed`
+        `First filtered record ${this.firstDeletedEmpId} delete completed`
+    );
+}
+
+
+async verifyFirstFilteredRecordDeleted() {
+
+    const empId = this.firstDeletedEmpId;
+
+    logger.info(`Verifying employee ${empId} is deleted`);
+
+    // Wait until the exact employee ID disappears
+    await expect.poll(
+        async () => {
+            const rows = this.page.locator("tbody tr");
+
+            const count = await rows.count();
+
+            for (let i = 0; i < count; i++) {
+                const id = (
+                    await rows.nth(i).locator("td").nth(1).innerText()
+                ).trim();
+
+                if (id === empId) {
+                    return true;
+                }
+            }
+
+            return false;
+        },
+        {
+            timeout: 15000,
+            intervals: [500, 1000, 2000]
+        }
+    ).toBe(false);
+
+    logger.info(
+        `Verified employee ${empId} is no longer displayed after deletion`
     );
 }
 }

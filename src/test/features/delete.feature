@@ -15,12 +15,12 @@ Scenario: Verify deleting one employee record does not remove other records
   And other employee training records should still be displayed
 
 @FilterDelete
-Scenario: Verify delete functionality after filtering by Classroom
-  When the user filters the records using Classroom "<trainigType>"
+Scenario Outline: Verify delete functionality after filtering by Training Type
+  When the user filters the records using Training Type "<trainingType>"
   And the user deletes the first record from the filtered results
   Then the first record should be deleted successfully
   And other employee training records should still be displayed
 
 Examples:
   | trainingType |
-  | Udemy       |
+  | Udemy        |
