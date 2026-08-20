@@ -12,7 +12,7 @@ import { Filterpage } from "../pages/filterpage";
 import { editPage } from "../pages/editPage";
 
 let browser: Browser;
-BeforeAll(async () => {
+BeforeAll({ timeout: 30000 },async () => {
     logger.info("Launching browser");
     browser = await chromium.launch({ headless: false });
 });

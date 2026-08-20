@@ -25,5 +25,11 @@ export class CustomWorld {
 
     editpage!:editPage;
 
+    filterResults: {
+        filters: string;
+        columns: string;
+        count: number;
+    }[] = [];
+
 }
 
