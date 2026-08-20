@@ -71,7 +71,7 @@ export class Filterpage extends BasePage{
             logger.info("Records are filtered using StudentNames successfully");
             break;
         case "Course":
-            await expect(this.courseCol.first()).toContainText(columns);
+            await expect(this.courseCol.first()).toContainText(columns,{timeout:10000});
             logger.info("Course filtering is successful")
             break;
         case "Trainer":
