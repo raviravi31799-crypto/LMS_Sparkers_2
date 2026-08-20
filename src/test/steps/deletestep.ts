@@ -15,19 +15,19 @@ When("the user clicks the Delete icon", { timeout: 15000 }, async function (this
 
     const ts = Date.now();
 
-    const record = {
-        projectName: raw.projectName,
-        empId: `${raw.empId}_${ts}`,
-        employeeName: raw.employeeName,
-        course: raw.course,
-        trainerName: raw.trainerName,
-        trainingType: raw.trainingType,
-        startDate: raw.today,
-        endDate: raw.endDate,
-        status: raw.status,
-        percentCompleted: raw.percentCompleted,
-    };
-
+  const record = {
+    projectName: raw.projectName,
+    empId: `${raw.empId}_${ts}`,
+    employeeName: raw.employeeName,
+    course: raw.course,
+    trainerName: raw.trainerName,
+    trainingType: raw.trainingType,
+    startDate: raw.today,
+    endDate: raw.endDate,
+    status: raw.status,
+    percentCompleted: raw.percentCompleted,
+    invalidPercentCompleted: raw.invalidPercentCompleted || "",
+};
     createdEmpId = record.empId;
 
     console.log(`Creating employee with EMP ID: ${createdEmpId}`);
@@ -61,3 +61,27 @@ Then("other employee training records should still be displayed", async function
 
     console.log(`Other employee training records displayed: ${count}`);
 });
+When(
+    'the user filters the records using Training Type {string}',
+    { timeout: 15000 },
+    async function (this: CustomWorld, trainingType: string) {
+
+        await this.deletepage.filterByClassroom(trainingType);
+    }
+);
+When(
+    'the user deletes the first record from the filtered results',
+    { timeout: 15000 },
+    async function (this: CustomWorld) {
+
+        await this.deletepage.deleteFirstFilteredRecord();
+    }
+);
+Then(
+    'the first record should be deleted successfully',
+    { timeout: 15000 },
+    async function (this: CustomWorld) {
+
+        await this.deletepage.verifyFirstFilteredRecordDeleted();
+    }
+);

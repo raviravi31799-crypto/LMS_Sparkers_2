@@ -42,6 +42,7 @@ When("the user enters valid employee training details", async function () {
   endDate: raw.endDate,
   status: raw.status,
   percentCompleted: raw.percentCompleted,
+  invalidPercentCompleted: raw.invalidPercentCompleted,
 };
 
   employeeName = record.employeeName;
