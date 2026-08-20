@@ -1,2 +1,2 @@
-projectName,employeeName,course,trainerName,trainingType,status,percentCompleted,startDate,endDate
-ABC,Sparkers,Automation Testing,Rajan,Coursera,Not Started,0,2026-08-23,2026-09-20
+projectName,employeeName,course,trainerName,trainingType,status,percentCompleted,startDate,endDate,invalidPercentCompleted
+ABC,Sparkers,Cucumber,Reema,Coursera,Not Started,0,2026-09-27,2026-10-25,300
