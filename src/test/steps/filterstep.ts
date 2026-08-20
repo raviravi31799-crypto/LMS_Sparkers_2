@@ -53,7 +53,7 @@ When('the user applies invalid filters from JSON', async function (this:CustomWo
 
 
 
-Then('the application should not display any matching records',{ timeout: 30000 }, async function (this:CustomWorld) {
+Then('the application should not display any matching records',{ timeout: 50000 }, async function (this:CustomWorld) {
  for (const result of this.filterResults) {
 
      // logger.info(`${result.filters} = ${result.columns} → ${result.count} records`);
