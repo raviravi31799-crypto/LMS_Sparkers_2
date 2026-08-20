@@ -3,7 +3,10 @@ import { EditTrainingPage } from "../pages/updatePage";
 import { CustomWorld } from "../world/world";
 import { TrainingRecord } from "../types/training.types";
 
-When("the user clicks the edit icon of the last employee training record",async function (this: CustomWorld) {
+
+When(
+    "the user clicks the edit icon of the last employee training record",
+    async function (this: CustomWorld) {
 
         const editPage = new EditTrainingPage(this.page);
 
@@ -11,17 +14,27 @@ When("the user clicks the edit icon of the last employee training record",async 
     }
 );
 
-When("the user updates the employee training details",async function (this: CustomWorld, dataTable: DataTable) {
+
+When(
+    "the user updates the employee training details",
+    async function (
+        this: CustomWorld,
+        dataTable: DataTable
+    ) {
 
         const editPage = new EditTrainingPage(this.page);
 
-        const data = dataTable.rowsHash() as Partial<TrainingRecord>;
+        const data =
+            dataTable.rowsHash() as Partial<TrainingRecord>;
 
         await editPage.editTraining(data);
     }
 );
 
-When("the user clicks the Update button",async function (this: CustomWorld) {
+
+When(
+    "the user clicks the Update button",
+    async function (this: CustomWorld) {
 
         const editPage = new EditTrainingPage(this.page);
 
@@ -29,7 +42,10 @@ When("the user clicks the Update button",async function (this: CustomWorld) {
     }
 );
 
-Then("the employee training record should be updated successfully",async function (this: CustomWorld) {
+
+Then(
+    "the employee training record should be updated successfully",
+    async function (this: CustomWorld) {
 
         const editPage = new EditTrainingPage(this.page);
 
@@ -37,7 +53,10 @@ Then("the employee training record should be updated successfully",async functio
     }
 );
 
-Then("the course validation message should be displayed",async function (this: CustomWorld) {
+
+Then(
+    "the course validation message should be displayed",
+    async function (this: CustomWorld) {
 
         const editPage = new EditTrainingPage(this.page);
 
