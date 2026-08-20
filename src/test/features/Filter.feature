@@ -13,10 +13,10 @@ Then the application should display matching "<columns>" value for applied "<fil
 Examples:
 |filters | columns           |
 |Project | ABC               |
-|EmpId   | 12345             |
-|Student | Sriram            |
-|Course  | Java Automation   |
-|Trainer | Ravi              |
+|EmpId   | 123               |
+|Student | Sparkers          |
+|Course  | Cucumber          |
+|Trainer | Reema             |
 
 
 @filter
