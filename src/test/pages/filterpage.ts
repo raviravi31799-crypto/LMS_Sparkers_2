@@ -8,16 +8,16 @@ export class Filterpage extends BasePage{
         super(page);
     }
     private project = this.page.locator("//tr[2]/th[1]//input");
-    private  empId = this.page.locator("//tr[2]/th[2]//input")
-    private empName = this.page.locator("//tr[2]/th[3]//input")
-    private  course = this.page.locator("//tr[2]/th[4]//input")
-    private  trainer = this.page.locator("//tr[2]/th[5]//input")
-    
+    private  empId = this.page.locator("//tr[2]/th[2]//input");
+    private empName = this.page.locator("//tr[2]/th[3]//input");
+    private  course = this.page.locator("//tr[2]/th[4]//input");
+    private  trainer = this.page.locator("//tr[2]/th[5]//input");
+    private trainingType = this.page.getByRole('combobox').nth(1);
     private projectCol = this.page.locator("//td[1]");
-    private  empIDCol = this.page.locator("//td[2]")
-    private  empNameCol = this.page.locator("//td[3]")
-    private  courseCol = this.page.locator("//td[4]")
-    private  trainerCol = this.page.locator("//td[5]")
+    private  empIDCol = this.page.locator("//td[2]");
+    private  empNameCol = this.page.locator("//td[3]");
+    private  courseCol = this.page.locator("//td[4]");
+    private  trainerCol = this.page.locator("//td[5]");
     private rows = this.page.locator("tbody tr");
     
      
@@ -90,6 +90,17 @@ async clearFilters() {
     await this.empName.fill("");
     await this.course.fill("");
     await this.trainer.fill("");
+}
+async selectTrainingType(trainingType: string) {
+    await this.trainingType.click();
+    await this.page.getByRole('option', { name: trainingType, exact: true }).click();
+}
+async verifyTrainingTypeFilter(trainingType: string) {
+    const rows = this.page.locator('tbody tr');
+
+    await expect(rows.first()).toBeVisible({ timeout: 10000 });
+
+    await expect(rows.first().locator('td').nth(5)).toContainText(trainingType);
 }
 }
 

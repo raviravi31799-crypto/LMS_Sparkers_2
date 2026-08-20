@@ -60,7 +60,16 @@ Then('the application should not display any matching records',{ timeout: 30000 
        logger.info("Then executed");
       expect(result.count).toBe(0);
     }
-  }
-);
+  
+  When('the user selects {string} from the Training Type dropdown', async function (this:CustomWorld,trainingType: string) {
+  await this.filterpage.selectTrainingType(trainingType);
+    
+});
+
+Then('the application should display matching {string} value in Training Type column', async function (this:CustomWorld,trainingType:string) {
+   await this.filterpage.verifyTrainingTypeFilter(trainingType);
+    
+});
 
 
+});
