@@ -61,3 +61,27 @@ Then("other employee training records should still be displayed", async function
 
     console.log(`Other employee training records displayed: ${count}`);
 });
+When(
+    'the user filters the records using Classroom {string}',
+    { timeout: 15000 },
+    async function (this: CustomWorld, classroom: string) {
+
+        await this.deletepage.filterByClassroom(classroom);
+    }
+);
+When(
+    'the user deletes the first record from the filtered results',
+    { timeout: 15000 },
+    async function (this: CustomWorld) {
+
+        await this.deletepage.deleteFirstFilteredRecord();
+    }
+);
+Then(
+    'the first record should be deleted successfully',
+    { timeout: 15000 },
+    async function (this: CustomWorld) {
+
+        await this.deletepage.verifyFirstFilteredRecordDeleted();
+    }
+);
